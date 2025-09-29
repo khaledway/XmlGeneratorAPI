@@ -89,6 +89,24 @@ namespace XmlGeneratorAPI.Requests
                 .NotNull()
                 .When(x => x.BizStep is BizStep.ErrorDeclaration)
                 .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+
+            RuleFor(x => x.UnitOfMeasure)
+               .NotEmpty()
+               .NotNull()
+               .When(x => x.BizStep is BizStep.PartialReceivingReturning)
+               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+
+            RuleFor(x => x.Quantity)
+               .NotEmpty()
+               .NotNull()
+               .When(x => x.BizStep is BizStep.PartialReceivingReturning)
+               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+
+            RuleFor(x => x.EPCClass)
+               .NotEmpty()
+               .NotNull()
+               .When(x => x.BizStep is BizStep.PartialReceivingReturning)
+               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
         }
 
     }

@@ -25,5 +25,9 @@ namespace XmlGeneratorAPI.Requests
         public DateTime DeclarationTime { get; set; } 
         public string Reason { get; set; }
         public string CorrectiveEventID { get; set; }
+        public int Quantity { get; set; }
+        public string UnitOfMeasure { get; set; }
+        public string EPCClass { get; set; }
+
     }
 }
