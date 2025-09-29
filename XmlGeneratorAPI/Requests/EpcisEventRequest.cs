@@ -29,5 +29,8 @@ namespace XmlGeneratorAPI.Requests
         public string UnitOfMeasure { get; set; }
         public string EPCClass { get; set; }
 
+
+        public Guid SGITNCsvFileID { get; set; }
+
     }
 }
