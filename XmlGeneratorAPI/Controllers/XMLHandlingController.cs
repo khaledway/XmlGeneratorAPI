@@ -17,9 +17,10 @@ namespace XmlGeneratorAPI.Controllers
     {
 
         IEventService _eventService;
-
-        public XMLHandlingController(IEventService eventService)
+        private readonly ApplicationDbContext _db;
+        public XMLHandlingController(ApplicationDbContext db, IEventService eventService)
         {
+            _db = db;
             _eventService = eventService;
         }
         public async Task<string> GenerateXML(BizStep BizStep, EpcisEventRequest request)
@@ -41,6 +42,7 @@ namespace XmlGeneratorAPI.Controllers
 
         private async Task<IFormFile> GetCvsFile(Guid sGITNCsvFileID)
         {
+            // use _db to get  file info and then return file 
             throw new NotImplementedException();
         }
 
