@@ -30,7 +30,7 @@
         Transformation
     }
 
-    public enum DispositionEvent
+    public enum Disposition
     {
         Active=1,
         InProgress,       
