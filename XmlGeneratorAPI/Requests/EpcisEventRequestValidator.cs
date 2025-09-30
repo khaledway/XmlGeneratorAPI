@@ -74,7 +74,7 @@ namespace XmlGeneratorAPI.Requests
                 .NotEmpty()
                 .NotNull()
                 .When(x => x.BizStep is BizStep.ErrorDeclaration)
-                .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value)
+                .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value)
                 .GreaterThan(new DateTime(2000, 1, 1))
                 .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
 
@@ -82,31 +82,31 @@ namespace XmlGeneratorAPI.Requests
                 .NotEmpty()
                 .NotNull()
                 .When(x => x.BizStep is BizStep.ErrorDeclaration)
-                .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+                .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
 
             RuleFor(x => x.CorrectiveEventID)
                 .NotEmpty()
                 .NotNull()
                 .When(x => x.BizStep is BizStep.ErrorDeclaration)
-                .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+                .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
 
             RuleFor(x => x.UnitOfMeasure)
                .NotEmpty()
                .NotNull()
                .When(x => x.BizStep is BizStep.PartialReceivingReturning)
-               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+               .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
 
             RuleFor(x => x.Quantity)
                .NotEmpty()
                .NotNull()
                .When(x => x.BizStep is BizStep.PartialReceivingReturning)
-               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+               .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
 
             RuleFor(x => x.EPCClass)
                .NotEmpty()
                .NotNull()
                .When(x => x.BizStep is BizStep.PartialReceivingReturning)
-               .WithMessage(_stringLocalizer["err-msg-MinimalDate"].Value);
+               .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
         }
 
     }
