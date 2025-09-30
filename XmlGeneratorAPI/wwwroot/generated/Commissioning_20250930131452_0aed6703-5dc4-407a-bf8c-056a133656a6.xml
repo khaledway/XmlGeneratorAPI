@@ -1,19 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<epcis:EPCISDocument xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2025-09-29T17:14:03+00:00" xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+<epcis:EPCISDocument xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2025-09-30T13:14:52+00:00" xmlns:epcis="urn:epcglobal:epcis:xsd:2">
   <EPCISBody>
     <EventList>
       <ObjectEvent>
         <eventTime>2025-09-29T11:30:31+03:00</eventTime>
-        <recordTime>9/29/2025 5:13:45 PM</recordTime>
+        <recordTime>9/30/2025 1:14:51 PM</recordTime>
         <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
         <epcList>
-          <epc>urn:epc:id:sgtin:0614141.812345.400</epc>
-          <epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
-          <epc>urn:epc:id:sgtin:0123456.000111.999999</epc>
-          <epc>(01)09506000123456(21)XYZ123</epc>
-          <epc>(01)00012345678905(21)SN987654321</epc>
-          <epc>urn:epc:id:sgtin:8888888.77777.12345</epc>
-          <epc>(01)04012345678901(21)ABC98765</epc>
+          <epc>622300297.0774.2RW9D9VXH8JI30M5GK</epc>
+          <epc>622300297.0774.A1ILJRB3H0CH2</epc>
+          <epc>622300297.0774.TD0UHWL1AST4FMQFWR</epc>
+          <epc>622300297.0774.J79UFNRCFN7F1QR</epc>
+          <epc>622300297.0774.WVK9Y4I0Z1OLZN</epc>
         </epcList>
         <action>ADD</action>
         <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
