@@ -58,7 +58,7 @@ namespace XmlGeneratorAPI.Strategies
                 .AddDisposition(predefined.Disposition)
                 .AddReadPoint(request.ReadPoint)
                 .AddBizLocation(request.BizLocation)
-                .AddIlmd(request.LotNumber, request.ItemExpirationDate);
+                .AddIlmd(request.LotNumber, request.ItemExpirationDate.GetValueOrDefault());
 
             return _builder.Build();
         }
@@ -220,7 +220,7 @@ namespace XmlGeneratorAPI.Strategies
                 .AddDisposition(predefined.Disposition)
                 .AddReadPoint(request.ReadPoint)
                 .AddBizLocation(request.BizLocation)
-                .AddQuantityList(request.EPCClass, request.Quantity, request.UnitOfMeasure);
+                .AddQuantityList(request.EPCClass, request.Quantity.GetValueOrDefault(), request.UnitOfMeasure);
 
             return _builder.Build();
         }
@@ -343,14 +343,14 @@ namespace XmlGeneratorAPI.Strategies
             AddCommonElements(request, predefined);
 
             _builder
-                .AddErrorDeclaration(request.DeclarationTime, request.Reason, request.CorrectiveEventID)
+                .AddErrorDeclaration(request.DeclarationTime.GetValueOrDefault(), request.Reason, request.CorrectiveEventID)
                 .AddEpcList(sgtinList)
                 .AddAction(predefined.Action)
                 .AddBizStep(predefined.BizStep)
                 .AddDisposition(predefined.Disposition)
                 .AddReadPoint(request.ReadPoint)
                 .AddBizLocation(request.BizLocation)
-                .AddIlmd(request.LotNumber, request.ItemExpirationDate);
+                .AddIlmd(request.LotNumber, request.ItemExpirationDate.GetValueOrDefault());
 
             return _builder.Build();
         }

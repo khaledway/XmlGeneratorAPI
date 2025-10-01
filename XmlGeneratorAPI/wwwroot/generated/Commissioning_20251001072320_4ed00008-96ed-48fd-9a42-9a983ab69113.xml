@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<epcis:EPCISDocument xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2025-10-01T07:23:20+00:00" xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+  <EPCISBody>
+    <EventList>
+      <ObjectEvent>
+        <eventTime>2025-10-01T07:15:21+00:00</eventTime>
+        <recordTime>10/1/2025 7:23:19 AM</recordTime>
+        <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+        <epcList>
+          <epc>622300297.0774.2RW9D9VXH8JI30M5GK</epc>
+          <epc>622300297.0774.A1ILJRB3H0CH2</epc>
+          <epc>622300297.0774.TD0UHWL1AST4FMQFWR</epc>
+        </epcList>
+        <action>ADD</action>
+        <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+        <disposition>urn:epcglobal:cbv:disp:active</disposition>
+        <readPoint>
+          <id>622300297.000.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>622300297.000.0</id>
+        </bizLocation>
+        <ilmd>
+          <cbvmda:itemExpirationDate>2025-10-01</cbvmda:itemExpirationDate>
+        </ilmd>
+      </ObjectEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>
