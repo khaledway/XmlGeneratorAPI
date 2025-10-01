@@ -7,8 +7,8 @@ namespace XmlGeneratorAPI.Requests
         // Core event attributes
         public DateTime EventTime { get; set; } 
         public BizStep BizStep { get; set; }
-        public string ReadPoint { get; set; }
-        public string BizLocation { get; set; }
+        public string? ReadPoint { get; set; }
+        public string? BizLocation { get; set; }
 
         // Identifiers
         public string? ParentID { get; set; }   // SSCC in aggregation

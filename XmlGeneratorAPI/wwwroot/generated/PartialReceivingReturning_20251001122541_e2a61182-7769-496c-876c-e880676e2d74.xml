@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<epcis:EPCISDocument xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2025-10-01T12:25:41+00:00" xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+  <EPCISBody>
+    <EventList>
+      <ObjectEvent>
+        <eventTime>2025-09-30T23:40:49+03:00</eventTime>
+        <eventTimeZoneOffset />
+        <action />
+        <bizStep />
+        <disposition />
+        <readPoint>
+          <id>urn:epc:id:sgln:62252269000.1.0</id>
+        </readPoint>
+        <bizLocation>
+          <id>urn:epc:id:sgln:62252269000.1.0</id>
+        </bizLocation>
+        <quantityList>
+          <quantityElement>
+            <epcClass>urn:epc:class:lgtin:622300297.0805.LOT123</epcClass>
+            <quantity>5.0</quantity>
+            <uom>EA</uom>
+          </quantityElement>
+        </quantityList>
+      </ObjectEvent>
+    </EventList>
+  </EPCISBody>
+</epcis:EPCISDocument>
