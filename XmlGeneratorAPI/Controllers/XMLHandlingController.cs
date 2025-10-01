@@ -50,7 +50,7 @@ namespace XmlGeneratorAPI.Controllers
                 var fileName = $"{request.BizStep}_{DateTime.UtcNow:yyyyMMddHHmmss}";
                 var savedFileName = await _eventService.SaveGeneratedXml(xml, fileName);
 
-                return Ok(new
+                return Ok(new 
                 {
                     success = true,
                     message = "XML generated successfully",
