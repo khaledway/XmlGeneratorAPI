@@ -44,7 +44,7 @@ namespace XmlGeneratorAPI.Controllers
                 }
 
                 // Generate XML using the event service
-                var xml = await _eventService.CreateEvent(request.BizStep, request, predefinedFields, sgtinList);
+                string xml = await _eventService.CreateEvent(request.BizStep, request, predefinedFields, sgtinList);
 
                 // Save generated XML to disk
                 var fileName = $"{request.BizStep}_{DateTime.UtcNow:yyyyMMddHHmmss}";

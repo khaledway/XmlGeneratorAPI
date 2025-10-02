@@ -8,7 +8,7 @@ namespace XmlGeneratorAPI.Strategies
     {
         public IBizStepStrategy GetStrategy(BizStep bizStep)
         {
-            var builder = new EpcisXmlBuilder();
+            var builder = new XmlBuilder();
 
             return bizStep switch
             {
