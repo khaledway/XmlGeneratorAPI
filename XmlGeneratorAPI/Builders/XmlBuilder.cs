@@ -46,16 +46,11 @@ namespace XmlGeneratorAPI.Builders
         public IXmlBuilder AddEpcisHeader(DateTime creationDate)
         {
             _writer.WriteStartElement("epcis", "EPCISDocument", "urn:epcglobal:epcis:xsd:2");
-
             _writer.WriteAttributeString("xmlns", "cbvmda", null, "urn:epcglobal:cbv:mda");
-
-
             _writer.WriteAttributeString("schemaVersion", "2.0");
             _writer.WriteAttributeString("creationDate", creationDate.ToString("yyyy-MM-ddTHH:mm:sszzz"));
-
             _writer.WriteStartElement("EPCISBody");
             _writer.WriteStartElement("EventList");
-
             return this;
         }
 
