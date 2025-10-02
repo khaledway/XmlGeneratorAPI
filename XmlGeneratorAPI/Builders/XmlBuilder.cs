@@ -6,7 +6,6 @@ namespace XmlGeneratorAPI.Builders
 {
     public class XmlBuilder : IXmlBuilder
     {
-        private readonly StringBuilder _xml;
         private XmlWriter _writer;
         private readonly MemoryStream _stream;
         private EventType _eventType;
@@ -15,14 +14,12 @@ namespace XmlGeneratorAPI.Builders
         public XmlBuilder()
         {
             _stream = new MemoryStream();
-            _xml = new StringBuilder();
             Reset();
         }
 
         public IXmlBuilder Reset()
         {
             _stream.SetLength(0);
-            _xml.Clear();
 
             var settings = new XmlWriterSettings
             {
@@ -296,7 +293,7 @@ namespace XmlGeneratorAPI.Builders
             _writer.WriteEndElement(); // EPCISBody
             _writer.WriteEndElement(); // EPCISDocument
 
-            _writer.Flush();
+            _writer.Flush();    
             _stream.Position = 0;
 
             using (var reader = new StreamReader(_stream, Encoding.UTF8))
