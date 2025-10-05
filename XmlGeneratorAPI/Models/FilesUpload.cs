@@ -40,5 +40,12 @@ namespace XmlGeneratorAPI.Models
         /// UTC upload time
         /// </summary>
         public DateTime UploadedAtUtc { get; set; } = DateTime.UtcNow;
+
+        /// <summary>
+        /// File Type 
+        /// </summary>
+        [MaxLength(50)]
+        public string FileType { get; set; } = default!; // "SGTIN" or "SSCC"
+
     }
 }

@@ -11,7 +11,8 @@ namespace XmlGeneratorAPI.Mappers
 
         private static readonly Dictionary<BizStep, BizStepConfig> _configs = new()
         {
-            [BizStep.Commissioning] = new("ADD", "urn:epcglobal:cbv:bizstep:commissioning", "urn:epcglobal:cbv:disp:active"),
+            [BizStep.CommissioningSGTIN] = new("ADD", "urn:epcglobal:cbv:bizstep:commissioning", "urn:epcglobal:cbv:disp:active"),
+            [BizStep.CommissioningSSCC] = new("ADD", "urn:epcglobal:cbv:bizstep:commissioning", "urn:epcglobal:cbv:disp:active"),
             [BizStep.Packing] = new("ADD", "urn:epcglobal:cbv:bizstep:packing", "urn:epcglobal:cbv:disp:active"),
             [BizStep.Shipping] = new("OBSERVE", "urn:epcglobal:cbv:bizstep:shipping", "urn:epcglobal:cbv:disp:in_transit"),
             [BizStep.VoidShipping] = new("DELETE", "urn:epcglobal:cbv:bizstep:void_shipping", "urn:epcglobal:cbv:disp:inactive"),

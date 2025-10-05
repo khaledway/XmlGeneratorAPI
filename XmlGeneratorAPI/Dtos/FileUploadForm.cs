@@ -1,8 +1,11 @@
-﻿namespace XmlGeneratorAPI.Dtos
+﻿using XmlGeneratorAPI.Enums;
+
+namespace XmlGeneratorAPI.Dtos
 {
     public class FileUploadForm
     {
         // The field name "file" will appear in Swagger UI
         public IFormFile File { get; set; } = default!;
+        public FileType Type { get; set; }
     }
 }

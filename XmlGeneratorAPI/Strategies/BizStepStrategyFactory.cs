@@ -12,7 +12,8 @@ namespace XmlGeneratorAPI.Strategies
 
             return bizStep switch
             {
-                BizStep.Commissioning => new CommissioningStrategy(builder),
+                BizStep.CommissioningSGTIN => new CommissioningStrategy(builder),
+                BizStep.CommissioningSSCC => new CommissioningStrategy(builder),
                 BizStep.Packing => new PackingStrategy(builder),
                 BizStep.Shipping => new ShippingStrategy(builder),
                 BizStep.VoidShipping => new VoidShippingStrategy(builder),

@@ -39,7 +39,8 @@ namespace XmlGeneratorAPI.Requests
             // BizLocation: Required for specific BizSteps
             RuleFor(x => x.BizLocation)
                 .NotEmpty()
-                .When(x => x.BizStep is BizStep.Commissioning
+                .When(x => x.BizStep is BizStep.CommissioningSGTIN
+                    or BizStep.CommissioningSSCC
                     or BizStep.Packing
                     or BizStep.VoidShipping
                     or BizStep.Receiving
@@ -70,13 +71,13 @@ namespace XmlGeneratorAPI.Requests
             // LotNumber: Required for Commissioning, ErrorDeclaration, and Sampling
             RuleFor(x => x.LotNumber)
                 .NotEmpty()
-                .When(x => x.BizStep is BizStep.Commissioning or BizStep.ErrorDeclaration or BizStep.Sampling)
+                .When(x => x.BizStep is BizStep.CommissioningSSCC or BizStep.CommissioningSGTIN or BizStep.ErrorDeclaration or BizStep.Sampling)
                 .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value);
 
             // ItemExpirationDate: Required for Commissioning and ErrorDeclaration
             RuleFor(x => x.ItemExpirationDate)
                 .NotEmpty()
-                .When(x => x.BizStep is BizStep.Commissioning or BizStep.ErrorDeclaration)
+                .When(x => x.BizStep is BizStep.CommissioningSSCC or BizStep.CommissioningSGTIN or BizStep.ErrorDeclaration)
                 .WithMessage(_stringLocalizer["err-msg-RequiredField"].Value)
                 .Must(date => date > new DateOnly(2000, 1, 1))
                 .When(x => x.ItemExpirationDate != default)

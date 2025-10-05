@@ -2,7 +2,8 @@
 {
     public enum BizStep
     {
-        Commissioning =1,
+        CommissioningSGTIN =1,
+        CommissioningSSCC,
         Packing,
         Shipping,
         VoidShipping,
@@ -39,5 +40,10 @@
         Stolen,
         Destroyed,
         RecallPending
+    }
+    public enum FileType
+    {
+        SGTIN = 1,
+        SSCC
     }
 }

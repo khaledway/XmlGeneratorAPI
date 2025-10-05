@@ -50,15 +50,14 @@ namespace XmlGeneratorAPI.Services
             var lines = content.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
 
             var sgtinList = new List<string>();
-            foreach (var line in lines)
+            for (int i = 1; i < lines.Length; i++)
             {
-                var trimmed = line.Trim();
+                var trimmed = lines[i].Trim();
                 if (!string.IsNullOrWhiteSpace(trimmed))
                 {
                     sgtinList.Add(trimmed);
                 }
             }
-
             return sgtinList;
         }
 
