@@ -17,7 +17,7 @@ namespace XmlGeneratorAPI.Strategies
             _builder
                 .Reset()
                 .SetEventType(EventType.Object)
-                .AddEpcisHeader(DateTime.UtcNow);
+                .AddEpcisHeader(DateTime.UtcNow , includeCbvmdaNamespace: true);
 
             AddCommonElements(request, predefined);
 

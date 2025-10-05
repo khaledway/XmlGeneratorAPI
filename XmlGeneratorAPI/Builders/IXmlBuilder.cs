@@ -5,7 +5,7 @@ namespace XmlGeneratorAPI.Builders
     public interface IXmlBuilder
     {
         IXmlBuilder Reset();
-        IXmlBuilder AddEpcisHeader(DateTime creationDate);
+        IXmlBuilder AddEpcisHeader(DateTime creationDate  , bool includeCbvmdaNamespace = false);
         IXmlBuilder AddEventTime(DateTime eventTime);
         IXmlBuilder AddRecordTime(string recordTime);
         IXmlBuilder AddEventTimeZoneOffset(string offset);

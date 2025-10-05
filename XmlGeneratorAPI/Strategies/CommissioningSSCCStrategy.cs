@@ -9,17 +9,17 @@ namespace XmlGeneratorAPI.Strategies
     {
         public CommissioningSSCCStrategy(IXmlBuilder builder) : base(builder) { }
 
-        public override string GenerateXml(EpcisEventRequest request, EpcisPredefinedFieldsDto predefined, List<string> sgtinList)
+        public override string GenerateXml(EpcisEventRequest request, EpcisPredefinedFieldsDto predefined, List<string> ssccList)
         {
             _builder
                 .Reset()
                 .SetEventType(EventType.Object)
-                .AddEpcisHeader(DateTime.UtcNow);
+                .AddEpcisHeader(DateTime.UtcNow , includeCbvmdaNamespace: true);
 
             AddCommonElements(request, predefined);
 
             _builder
-                .AddEpcList(sgtinList)
+                .AddEpcList(ssccList)
                 .AddAction(predefined.Action)
                 .AddBizStep(predefined.BizStep)
                 .AddDisposition(predefined.Disposition)

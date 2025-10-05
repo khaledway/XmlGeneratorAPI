@@ -33,7 +33,7 @@ namespace XmlGeneratorAPI.Controllers
             try
             {
                 // Get predefined fields based on BizStep
-                var predefinedFields = BizStepDefaults.Resolve(request.BizStep);
+                var predefinedFields = BizStepDefaults.Resolve(request.BizStep , request);
 
                 // Extract SGTIN list from uploaded CSV file
                 var sgtinList = await _eventService.ExtractSgtinListFromFile(request.SGITNCsvFileID);
@@ -138,7 +138,7 @@ namespace XmlGeneratorAPI.Controllers
         {
             try
             {
-                var predefinedFields = BizStepDefaults.Resolve(request.BizStep);
+                var predefinedFields = BizStepDefaults.Resolve(request.BizStep, request);
                 var sgtinList = await _eventService.ExtractSgtinListFromFile(request.SGITNCsvFileID);
 
                 if (sgtinList == null || !sgtinList.Any())

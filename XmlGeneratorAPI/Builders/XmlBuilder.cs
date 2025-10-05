@@ -40,10 +40,17 @@ namespace XmlGeneratorAPI.Builders
             return this;
         }
 
-        public IXmlBuilder AddEpcisHeader(DateTime creationDate)
+        
+        public IXmlBuilder AddEpcisHeader(DateTime creationDate, bool includeCbvmdaNamespace = false)
         {
             _writer.WriteStartElement("epcis", "EPCISDocument", "urn:epcglobal:epcis:xsd:2");
-            _writer.WriteAttributeString("xmlns", "cbvmda", null, "urn:epcglobal:cbv:mda");
+
+            // Only add cbvmda namespace if needed
+            if (includeCbvmdaNamespace)
+            {
+                _writer.WriteAttributeString("xmlns", "cbvmda", null, "urn:epcglobal:cbv:mda");
+            }
+
             _writer.WriteAttributeString("schemaVersion", "2.0");
             _writer.WriteAttributeString("creationDate", creationDate.ToString("yyyy-MM-ddTHH:mm:sszzz"));
             _writer.WriteStartElement("EPCISBody");
@@ -67,6 +74,8 @@ namespace XmlGeneratorAPI.Builders
                 _writer.WriteStartElement(eventName);
                 _isEventStarted = true;
             }
+
+
         }
 
         public IXmlBuilder AddEventTime(DateTime eventTime)

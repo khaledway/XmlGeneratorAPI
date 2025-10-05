@@ -28,8 +28,6 @@ namespace XmlGeneratorAPI.Requests
         public int? Quantity { get; set; }
         public string? UnitOfMeasure { get; set; }
         public string? EPCClass { get; set; }
-
-
         public Guid SGITNCsvFileID { get; set; }
 
     }
