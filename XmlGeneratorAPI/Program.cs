@@ -22,9 +22,12 @@ builder.Services.AddSwaggerGen(c =>
 // Options
 builder.Services.Configure<UploadOptions>(builder.Configuration.GetSection("Uploads"));
 
-// DbContext (SQL Server)
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// DbContext  
+// 1. Read connection string
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// 2. Register DbContext with Pomelo MySQL provider
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register services
 builder.Services.AddScoped<IEventService, EventService>();

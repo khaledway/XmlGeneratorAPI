@@ -1,9 +1,9 @@
-using System;
+using SSCCProject.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace XmlGeneratorAPI.Models
 {
-    public class FilesUpload
+    public class FilesUpload : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
