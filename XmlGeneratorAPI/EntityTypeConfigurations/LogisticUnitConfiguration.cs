@@ -1,9 +1,9 @@
-﻿namespace SSCCProject.Infrastructure.EntityTypeConfigurations;
+﻿namespace XmlGeneratorAPI.EntityTypeConfigurations;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SSCCProject.Domain.Entities;
-using static SSCCProject.Domain.Constants;
+using XmlGeneratorAPI.Models;
+using static XmlGeneratorAPI.Models.Constants;
 
 public class LogisticUnitConfiguration : IEntityTypeConfiguration<LogisticUnit>
 {

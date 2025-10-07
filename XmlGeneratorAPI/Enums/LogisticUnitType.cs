@@ -1,4 +1,4 @@
-﻿namespace SSCCProject.Domain.Enums;
+﻿namespace XmlGeneratorAPI.Enums;
 
 public enum LogisticUnitType
 {

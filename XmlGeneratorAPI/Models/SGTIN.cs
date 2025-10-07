@@ -1,4 +1,4 @@
-﻿namespace SSCCProject.Domain.Entities;
+﻿namespace XmlGeneratorAPI.Models;
 
 public class SGTIN : BaseEntity
 {

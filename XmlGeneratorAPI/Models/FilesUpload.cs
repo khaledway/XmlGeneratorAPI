@@ -1,4 +1,3 @@
-using SSCCProject.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace XmlGeneratorAPI.Models

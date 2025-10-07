@@ -1,6 +1,6 @@
-﻿//using SkiaSharp;
+﻿using SkiaSharp;
 
-namespace SSCCProject.Domain;
+namespace XmlGeneratorAPI.Models;
 
 public class Constants
 {
@@ -22,7 +22,7 @@ public class Constants
         public const int SsccBarcodeHeight = 200;
         public const int Padding = 100;
         public const int Quality = 100;
-        //public const SKEncodedImageFormat ImageExtension = SKEncodedImageFormat.Png;
+        public const SKEncodedImageFormat ImageExtension = SKEncodedImageFormat.Png;
         public const string LabelsFolderName = "SSCC_Lables";
         public const string Slash = "/";
 

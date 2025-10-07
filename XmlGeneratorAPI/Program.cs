@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using XmlGeneratorAPI.Contracts;
 using XmlGeneratorAPI.Data;
 using XmlGeneratorAPI.Options;
 using XmlGeneratorAPI.Services;
@@ -28,11 +29,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // 2. Register DbContext with Pomelo MySQL provider
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Register services
-builder.Services.AddScoped<IEventService, EventService>();
-builder.Services.AddScoped<BizStepStrategyFactory>();
-
+  
 // CORS (optional - enable if needed for frontend)
 builder.Services.AddCors(options =>
 {
@@ -43,6 +40,8 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+
+AddServices(builder);
 
 var app = builder.Build();
 
@@ -80,3 +79,12 @@ app.MapControllers();
 app.UseStaticFiles();
 
 app.Run();
+
+
+static void AddServices(WebApplicationBuilder builder)
+{
+    builder.Services.AddScoped<IEventService, EventService>();
+    builder.Services.AddScoped<BizStepStrategyFactory>();
+    builder.Services.AddScoped<ILogisticUnitService, LogisticUnitService>();
+    builder.Services.AddScoped<ISSCCService, SSCCService>();
+}

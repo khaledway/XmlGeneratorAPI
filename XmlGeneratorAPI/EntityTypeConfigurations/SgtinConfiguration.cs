@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SSCCProject.Domain.Entities;
-using static SSCCProject.Domain.Constants;
+using XmlGeneratorAPI.Models;
+using static XmlGeneratorAPI.Models.Constants;
 
-namespace SSCCProject.Infrastructure.EntityTypeConfigurations;
+namespace XmlGeneratorAPI.EntityTypeConfigurations;
 
 
 public class SgtinConfiguration : IEntityTypeConfiguration<SGTIN>
