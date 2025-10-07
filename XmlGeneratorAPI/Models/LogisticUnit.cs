@@ -1,6 +1,6 @@
-﻿using SSCCProject.Domain.Enums;
+﻿using XmlGeneratorAPI.Enums;
 
-namespace SSCCProject.Domain.Entities;
+namespace XmlGeneratorAPI.Models;
 
 public class LogisticUnit : BaseEntity
 {

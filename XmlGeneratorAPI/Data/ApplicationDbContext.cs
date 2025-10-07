@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using SSCCProject.Domain.Entities;
 using XmlGeneratorAPI.Models;
 
 namespace XmlGeneratorAPI.Data

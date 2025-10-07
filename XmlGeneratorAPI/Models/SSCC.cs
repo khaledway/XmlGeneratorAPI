@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace SSCCProject.Domain.Entities;
+namespace XmlGeneratorAPI.Models;
 
 public sealed class SSCC : BaseEntity
 {
