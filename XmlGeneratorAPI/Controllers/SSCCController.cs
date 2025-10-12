@@ -9,15 +9,26 @@ namespace XmlGeneratorAPI.Controllers;
 public class SSCCController(ISSCCService ssccService) : ControllerBase
 {
     /// <summary>
-    /// Creates a new SSCC for a Logistic Unit.
+    /// Creates  new SSCC for a Logistic Unit.
     /// </summary>
     /// <param name="logisticUnitId">The Logistic Unit ID to attach SSCC.</param>
     /// <param name="gs1companyPrefix">GS1 Company Prefix.</param>
     /// <param name="extensionDigit">Extension Digit (0–9).</param>
-    [HttpPost("create")]
-    public async Task<ActionResult<string>> Create(CreateSSCCRequest request)
+    [HttpPost("create-sscc-for-logistic-unit")]
+    public async Task<ActionResult<string>> CreateSsccForLogisticUnit(CreateSSCCForLogisticUnitRequest request)
     {
-        return Ok(await ssccService.CreateAsync(request));
+        return Ok(await ssccService.CreateSsccAndAssignToLogisticUnitAsync(request));
+    }
+
+    /// <summary>
+    /// Creates new SSCC 
+    /// </summary>
+    /// <param name="gs1companyPrefix">GS1 Company Prefix.</param>
+    /// <param name="extensionDigit">Extension Digit (0–9).</param>
+    [HttpPost("create-sscc")]
+    public async Task<ActionResult<string>> CreateSscc(CreateSsccRequest request)
+    {
+        return Ok(await ssccService.CreateSsccAsync(request));
     }
 
 

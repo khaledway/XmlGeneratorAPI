@@ -13,7 +13,7 @@ public sealed class SSCC : BaseEntity
     public string SerialNumberPaddedZeros { get; init; }
     public int SerialNumber { get; init; }
     public string CheckDigit { get; init; } // "0"-"9" = last digit of Code = computed from first 17 digits
-    public Guid LogisticUnitId { get; set; }
+    public Guid? LogisticUnitId { get; set; }
 
     //navigation property
     public LogisticUnit LogisticUnit { get; set; }

@@ -4,9 +4,10 @@ namespace XmlGeneratorAPI.Contracts;
 
 public interface ISSCCService
 {
-    Task<string> CreateAsync(CreateSSCCRequest request);
+    Task<string> CreateSsccAndAssignToLogisticUnitAsync(CreateSSCCForLogisticUnitRequest request);
+    Task<string> CreateSsccAsync(CreateSsccRequest request);
     public int CalculateCheckDigit(string first17DigitsOfSsccCode);
     public bool IsValid(string ssccCode);
-    public string ExportSsccBarcodeLabel(string ssccCode);  
+    public string ExportSsccBarcodeLabel(string ssccCode);
 }
 

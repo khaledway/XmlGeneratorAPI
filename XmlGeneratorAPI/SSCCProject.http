@@ -18,126 +18,35 @@ Accept: application/json
   "widthInCm": 70,
   "heightInCm": 150,
   "sgtins": [
-    "6225000055513000001",
-    "6225000055520000002"
-  ]
-}
-
-### Create new Logistic Unit
-POST {{SSCCProject_HostAddress}}/api/LogisticUnit
-Content-Type: application/json
-Accept: application/json
-
-{
-  "name": "10 Dell laptops for gs1 company Carton",
-  "type": 2,
-  "itemsCount": 10,
-  "weightInKg": 50,
-  "lengthInCm": 200,
-  "widthInCm": 50,
-  "heightInCm": 100,
-  "sgtins": [
     "6225000055513000003",
     "6225000055520000004"
   ]
 }
-
-### Create new Logistic Unit
-POST {{SSCCProject_HostAddress}}/api/LogisticUnit
+ 
+  
+### Create SSCC for logistic unit
+POST {{SSCCProject_HostAddress}}/api/SSCC/Create-sscc-for-logistic-unit
 Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "7 tea bags PALLET",
-  "type": 1,
-  "itemsCount": 7,
-  "weightInKg": 20.5,
-  "lengthInCm": 50,
-  "widthInCm": 50,
-  "heightInCm": 200,
-  "sgtins": [
-    "6225000055513000005",
-    "6225000055520000006"
-  ]
+  "logisticUnitId": "c9bae2f5-5812-471b-f5e7-08de0995154f",
+  "gs1CompanyPrefix": "622500005980",
+  "extensionDigit": 0
+}
+
+### Create SSCC 
+POST {{SSCCProject_HostAddress}}/api/SSCC/Create-sscc
+Content-Type: application/json
+Accept: application/json
+
+{ 
+  "gs1CompanyPrefix": "622500005980",
+  "extensionDigit": 0
 }
  
-### Create new Logistic Unit
-POST {{SSCCProject_HostAddress}}/api/LogisticUnit
-Content-Type: application/json
-Accept: application/json
-
-{
-  "name": "20 panado case",
-  "type": 3,
-  "itemsCount": 20,
-  "weightInKg": 2.5,
-  "lengthInCm": 50,
-  "widthInCm": 50,
-  "heightInCm": 100,
-  "sgtins": [
-    "6225000055513000007",
-    "6225000055520000008"
-  ]
-}
-  
-### Create SSCC 
-POST {{SSCCProject_HostAddress}}/api/SSCC/Create
-Content-Type: application/json
-Accept: application/json
-
-{
-  "logisticUnitId": "d5c1cf45-28ca-4de7-8b05-08de05b1c12c",
-  "gs1CompanyPrefix": "62250000555",
-  "extensionDigit": 0
-}
-
-### Create SSCC 
-POST {{SSCCProject_HostAddress}}/api/SSCC/Create
-Content-Type: application/json
-Accept: application/json
-
-{
-  "logisticUnitId": 2,
-  "gs1CompanyPrefix": "62250000555",
-  "extensionDigit": 0
-}
-
-### Create SSCC 
-POST {{SSCCProject_HostAddress}}/api/SSCC/Create
-Content-Type: application/json
-Accept: application/json
-
-{
-  "logisticUnitId": 3,
-  "gs1CompanyPrefix": "62250000555",
-  "extensionDigit": 0
-}
-
-### Create SSCC 
-POST {{SSCCProject_HostAddress}}/api/SSCC/Create
-Content-Type: application/json
-Accept: application/json
-
-{
-  "logisticUnitId": 4,
-  "gs1CompanyPrefix": "62250000555",
-  "extensionDigit": 0
-}
-
 
 ### Export SSCC Label as PNG Image 
-POST {{SSCCProject_HostAddress}}/api/SSCC/export-label?ssccCode=062250000555543350
+POST {{SSCCProject_HostAddress}}/api/SSCC/export-label?ssccCode=062250000598093003
 Accept: text/plain
-
-### Export SSCC Label as PNG Image 
-POST {{SSCCProject_HostAddress}}/api/SSCC/export-label?ssccCode=062250000555244868
-Accept: text/plain
-
-### Export SSCC Label as PNG Image 
-POST {{SSCCProject_HostAddress}}/api/SSCC/export-label?ssccCode=062250000555705352
-Accept: text/plain
-
-### Export SSCC Label as PNG Image 
-POST {{SSCCProject_HostAddress}}/api/SSCC/export-label?ssccCode=062250000555366072
-Accept: text/plain
-
+ 

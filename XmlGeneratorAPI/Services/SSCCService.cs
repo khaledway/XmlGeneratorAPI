@@ -12,9 +12,19 @@ namespace XmlGeneratorAPI.Services
 {
     public class SSCCService(ApplicationDbContext dbContext) : ISSCCService
     {
-        public async Task<string> CreateAsync(CreateSSCCRequest request)
+
+        public async Task<string> CreateSsccAsync(CreateSsccRequest request)
         {
-            var sscc = await CreateSSCC(request);
+            var sscc = await CreateSSCC(request.Gs1CompanyPrefix, request.ExtensionDigit);
+            dbContext.SSCCs.Add(sscc);
+            await dbContext.SaveChangesAsync();
+
+            return sscc.Code;
+        }
+        public async Task<string> CreateSsccAndAssignToLogisticUnitAsync(CreateSSCCForLogisticUnitRequest request)
+        {
+            var sscc = await CreateSSCC(request.Gs1CompanyPrefix, request.ExtensionDigit);
+            sscc.LogisticUnitId = request.LogisticUnitId;
 
             dbContext.SSCCs.Add(sscc);
             await dbContext.SaveChangesAsync();
@@ -22,22 +32,22 @@ namespace XmlGeneratorAPI.Services
             return sscc.Code;
         }
 
-        private async Task<SSCC> CreateSSCC(CreateSSCCRequest request)
+        private async Task<SSCC> CreateSSCC(string gs1CompanyPrefix, int extensionDigit)
         {
-            if (string.IsNullOrWhiteSpace(request.Gs1CompanyPrefix) || !request.Gs1CompanyPrefix.All(char.IsDigit))
-                throw new ArgumentException("gs1companyPrefix must be numeric", nameof(request.Gs1CompanyPrefix) + " " + request.Gs1CompanyPrefix);
+            if (string.IsNullOrWhiteSpace(gs1CompanyPrefix) || !gs1CompanyPrefix.All(char.IsDigit))
+                throw new ArgumentException("gs1companyPrefix must be numeric", nameof(gs1CompanyPrefix) + " " + gs1CompanyPrefix);
 
-            if (request.Gs1CompanyPrefix.Length > Business.MaxCompanyPrefixLength)
-                throw new ArgumentException("companyPrefix too long for SSCC", nameof(request.Gs1CompanyPrefix));
+            if (gs1CompanyPrefix.Length > Business.MaxCompanyPrefixLength)
+                throw new ArgumentException("companyPrefix too long for SSCC", nameof(gs1CompanyPrefix));
 
-            if (request.ExtensionDigit < Business.MinExtensionDigit || request.ExtensionDigit > Business.MaxExtensionDigit)
-                throw new ArgumentOutOfRangeException(nameof(request.ExtensionDigit));
+            if (extensionDigit < Business.MinExtensionDigit || extensionDigit > Business.MaxExtensionDigit)
+                throw new ArgumentOutOfRangeException(nameof(extensionDigit));
 
             // serial number length = 18 - (1 extension) - (1 check digit ) - companyPrefix.Length 
-            int serialLength = Business.SsccCodeLength - Business.ExtensionDigitLength - Business.CheckDigitLength - request.Gs1CompanyPrefix.Length;
+            int serialLength = Business.SsccLength - Business.ExtensionDigitLength - Business.CheckDigitLength - gs1CompanyPrefix.Length;
 
             if (serialLength < Business.MinSerialLength)
-                throw new ArgumentException("companyPrefix leaves no room for serial reference", nameof(request.Gs1CompanyPrefix));
+                throw new ArgumentException("companyPrefix leaves no room for serial reference", nameof(serialLength));
 
             int serialNumber;
             // Ensure the generated serial number is unique
@@ -46,7 +56,7 @@ namespace XmlGeneratorAPI.Services
                 // Generate a random numeric serial number with Nanoid
                 serialNumber = int.Parse(Nanoid.Generate(Business.NanoidAlphabets, serialLength));
             }
-            while (await dbContext.SSCCs.AnyAsync(s => s.SerialNumber == serialNumber && s.Gs1CompanyPrefix == request.Gs1CompanyPrefix));
+            while (await dbContext.SSCCs.AnyAsync(s => s.SerialNumber == serialNumber && s.Gs1CompanyPrefix == gs1CompanyPrefix));
 
             string serialAsString = serialNumber.ToString();
             if (serialAsString.Length > serialLength)
@@ -54,27 +64,30 @@ namespace XmlGeneratorAPI.Services
 
             string serialNumberPaddedZeros = serialAsString.PadLeft(serialLength, Business.ZeroCharacter);
 
-            string first17Digits = $"{request.ExtensionDigit}{request.Gs1CompanyPrefix}{serialNumberPaddedZeros}";
+            string first17Digits = $"{extensionDigit}{gs1CompanyPrefix}{serialNumberPaddedZeros}";
             int checkDigit = CalculateCheckDigit(first17Digits);
             string ssccFullCode = $"{first17Digits}{checkDigit}";
 
             return new SSCC
             {
                 Code = ssccFullCode,
-                ExtensionDigit = request.ExtensionDigit.ToString(),
-                Gs1CompanyPrefix = request.Gs1CompanyPrefix,
+                ExtensionDigit = extensionDigit.ToString(),
+                Gs1CompanyPrefix = gs1CompanyPrefix,
                 SerialNumber = serialNumber,
                 SerialNumberPaddedZeros = serialNumberPaddedZeros,
                 CheckDigit = checkDigit.ToString(),
-                LogisticUnitId = request.LogisticUnitId
             };
         }
 
         // Validate a full SSCC string (18 digits)
         public bool IsValid(string sscc)
         {
-            if (string.IsNullOrWhiteSpace(sscc) || sscc.Length != 18 || !sscc.All(char.IsDigit)) return false;
-            var raw17 = sscc.Substring(0, 17);
+            if (string.IsNullOrWhiteSpace(sscc)
+                || sscc.Length != Business.SsccLength
+                || !sscc.All(char.IsDigit))
+                return false;
+
+            var raw17 = sscc[..Business.SsccWithoutCheckDigitLength];
             var expected = CalculateCheckDigit(raw17);
             var actual = sscc[17] - '0';
             return expected == actual;
@@ -158,5 +171,6 @@ namespace XmlGeneratorAPI.Services
 
             return outputPath;
         }
+
     }
 }

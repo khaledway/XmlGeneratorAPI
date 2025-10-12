@@ -1,10 +1,9 @@
 ﻿namespace XmlGeneratorAPI.Requests;
 
 /// <summary>
-/// Request to create a new SSCC for a logistic unit
+/// Request to create a new SSCC 
 /// </summary>
-public record CreateSSCCRequest(
-    Guid LogisticUnitId,
+public record CreateSsccRequest(
     string Gs1CompanyPrefix,
     int ExtensionDigit
 );
